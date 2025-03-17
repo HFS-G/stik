@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Музыкальная картинка</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f0f0f0;
+        }
+        img {
+            max-width: 500px;
+            cursor: pointer;
+        }
+        button {
+            margin-top: 30px;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <img src="media/s.png" width="300" alt="Нажми меня">
+  <br>
+  <br>
+    <button onclick="muteAudio()">Приглушить</button>
+
+    <audio id="myAudio">
+        <source src="media/a.ogg" type="audio/mpeg">
+    </audio>
+
+    <script>
+        const audio = document.getElementById('myAudio');
+        const image = document.querySelector('img');
+        
+        audio.volume = 1.0; // Громкость по умолчанию
+
+        image.addEventListener('click', function() {
+            audio.play();
+        });
+
+        function muteAudio() {
+            if (audio.volume === 1.0) {
+                audio.volume = 0.2;
+                document.querySelector('button').textContent = 'Громче';
+            } else {
+                audio.volume = 1.0; // Возвращаем полную громкость
+                document.querySelector('button').textContent = 'Приглушить';
+            }
+        }
+    </script>
+</body>
+</html>
